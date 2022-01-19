@@ -13,10 +13,13 @@ const addBtn = document.querySelector(".add");
 
 // form selectors
 const form = document.querySelector("form");
-const closeBtn = document.querySelector(".close-btn");
+const closeIcon = document.querySelector(".close-icon");
+const linkIcon = document.querySelector(".link-icon");
+const cameraIcon = document.querySelector(".camera-icon");
 const userHeadingInput = document.getElementById("heading");
 const userContentInput = document.getElementById("content");
 const userImageInput = document.getElementById("image");
+const userLinkInput = document.getElementById("link");
 
 // **** Global Variables ****
 let mouseX = null;
@@ -30,17 +33,17 @@ let placingContent = false;
 
 // places form on bulletin at click location
 board.addEventListener('click', (e) => {
-  console.log(e.offsetX, e.offsetY);
-  if (placingContent) {
+  console.log(e.target);
+  if (placingContent && e.target === board) {
     mouseX = e.offsetX;
     mouseY = e.offsetY;
     form.style.top = `${mouseY}px`;
-    form.style.left = `${mouseX}px`;
+    form.style.left = `${mouseX - 50}px`;
     form.classList.remove("hide");
   }
 })
 
-addBtn.addEventListener('click', function(e) {
+addBtn.addEventListener('click', function (e) {
   if (placingContent) {
     placingContent = false;
     addBtn.classList.remove("active");
@@ -53,31 +56,69 @@ addBtn.addEventListener('click', function(e) {
 // form listeners
 
 // stops board listener from changing the forms position when the form is clicked
-form.addEventListener('click', function (e) {
-  e.stopPropagation();
-});
+
+
+
 
 form.addEventListener('keydown', function (e) {
 
   if (e.key === "Enter") {
     const newCard = document.createElement("div");
     newCard.innerHTML =
-      `<h3>${userHeadingInput.value}</h3>
-<p>${userContentInput.value}</p>
-<img src=${userImageInput.value} alt="User's image">`;
-
+      `<div class="icon-container">
+          <i class="fas fa-edit"></i>
+          <i class="fas fa-window-minimize"></i>
+          <i class="fas fa-window-close close-icon"></i>
+       </div>
+       <div class="content-container">
+          <h3>${userHeadingInput.value}</h3>
+          <p>${userContentInput.value}</p>
+       </div>`;
+    if (userLinkInput.value) {
+      let newLink = document.createElement("a");
+      newLink.href = userLinkInput.value;
+      newLink.textContent = "link";
+      newLink.target = "_blank";
+      newCard.appendChild(newLink);
+    }
+    if (userImageInput.value) {
+      let newImage = document.createElement("img");
+      newImage.src = userImageInput.value;
+      newImage.alt = "user input";
+      newCard.appendChild(newImage);
+    }
     newCard.classList.add("bulletin-card");
     newCard.style.top = `${mouseY}px`;
-    newCard.style.left = `${mouseX}px`;
+    newCard.style.left = `${mouseX - 50}px`;
     board.appendChild(newCard);
     form.classList.add("hide");
     userHeadingInput.value = "";
     userContentInput.value = "";
+    userLinkInput.value = "";
     userImageInput.value = "";
   }
 });
 
-closeBtn.addEventListener('click', function () {
+closeIcon.addEventListener('click', function () {
   form.classList.add("hide");
 })
 
+linkIcon.addEventListener("click", function () {
+  let linkBoxHeight = userLinkInput.style.height;
+  if (linkBoxHeight === "2.5rem") {
+    linkBoxHeight = 0;
+  } else {
+    linkBoxHeight = "2.5rem";
+  }
+  userLinkInput.style.height = linkBoxHeight;
+})
+
+cameraIcon.addEventListener("click", function () {
+  let imageBoxHeight = userImageInput.style.height;
+  if (imageBoxHeight === "2.5rem") {
+    imageBoxHeight = 0;
+  } else {
+    imageBoxHeight = "2.5rem";
+  }
+  userImageInput.style.height = imageBoxHeight;
+})

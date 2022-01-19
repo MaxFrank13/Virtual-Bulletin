@@ -17,13 +17,15 @@
   </header>
   <main class="board">
     <form class="hide">
-      <i class="fas fa-window-close close-btn"></i>
-      <label for="heading">Enter heading here:</label>
-      <textarea id="heading" name="heading"></textarea>
-      <label for="content">Enter content here:</label>
-      <textarea id="content" name="content" rows="10" columns="35"></textarea>
-      <label for="image">Link an image here:</label>
-      <textarea id="image" name="image"></textarea>
+      <div class="icon-container">
+        <i class="fas fa-camera camera-icon"></i>
+        <i class="fas fa-link link-icon"></i>
+        <i class="fas fa-window-close close-icon"></i>
+      </div>
+      <textarea id="heading" name="heading" placeholder="heading"></textarea>
+      <textarea id="content" name="content" rows="10" columns="35" placeholder="description/notes/content"></textarea>
+      <textarea id="link" name="link" placeholder="insert your link here"></textarea>
+      <textarea id="image" name="image" placeholder="insert an image address here"></textarea>
       
     </form>
   </main>
