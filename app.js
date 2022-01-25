@@ -13,7 +13,7 @@ const addBtn = document.querySelector(".add");
 
 // form selectors
 const form = document.querySelector("form");
-const closeIcon = document.querySelector(".close-icon");
+const formCloseIcon = document.querySelector(".form-close");
 const linkIcon = document.querySelector(".link-icon");
 const cameraIcon = document.querySelector(".camera-icon");
 const userHeadingInput = document.getElementById("heading");
@@ -33,7 +33,6 @@ let placingContent = false;
 
 // places form on bulletin at click location
 board.addEventListener('click', (e) => {
-  console.log(e.target);
   if (placingContent && e.target === board) {
     mouseX = e.offsetX;
     mouseY = e.offsetY;
@@ -56,9 +55,6 @@ addBtn.addEventListener('click', function (e) {
 // form listeners
 
 // stops board listener from changing the forms position when the form is clicked
-
-
-
 
 form.addEventListener('keydown', function (e) {
 
@@ -99,7 +95,7 @@ form.addEventListener('keydown', function (e) {
   }
 });
 
-closeIcon.addEventListener('click', function () {
+formCloseIcon.addEventListener('click', function () {
   form.classList.add("hide");
 })
 
@@ -107,8 +103,13 @@ linkIcon.addEventListener("click", function () {
   let linkBoxHeight = userLinkInput.style.height;
   if (linkBoxHeight === "2.5rem") {
     linkBoxHeight = 0;
+    userLinkInput.style.visibility = "hidden";
+    userLinkInput.style.marginTop = "0";
   } else {
     linkBoxHeight = "2.5rem";
+    userLinkInput.style.visibility = "visible";
+    userLinkInput.style.marginTop = "1rem";
+
   }
   userLinkInput.style.height = linkBoxHeight;
 })
@@ -117,8 +118,12 @@ cameraIcon.addEventListener("click", function () {
   let imageBoxHeight = userImageInput.style.height;
   if (imageBoxHeight === "2.5rem") {
     imageBoxHeight = 0;
+    userImageInput.style.visibility = "hidden";
+    userImageInput.style.marginTop = "0";
   } else {
     imageBoxHeight = "2.5rem";
+    userImageInput.style.visibility = "visible";
+    userImageInput.style.marginTop = "1rem";
   }
   userImageInput.style.height = imageBoxHeight;
 })
