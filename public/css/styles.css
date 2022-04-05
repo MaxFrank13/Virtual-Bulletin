@@ -44,7 +44,7 @@ img {
 
 .board {
   height: 90vh;
-  background: url("images/cork-bg.jpg");
+  background: url("../assets/images/cork-bg.jpg");
   position: relative;
 }
 .active {

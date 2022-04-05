@@ -39,8 +39,8 @@ board.addEventListener('click', (e) => {
     form.style.top = `${mouseY}px`;
     form.style.left = `${mouseX - 50}px`;
     form.classList.remove("hide");
-  }
-})
+  };
+});
 
 addBtn.addEventListener('click', function (e) {
   if (placingContent) {
@@ -49,8 +49,8 @@ addBtn.addEventListener('click', function (e) {
   } else {
     placingContent = true;
     addBtn.classList.add("active");
-  }
-})
+  };
+});
 
 // form listeners
 
@@ -76,28 +76,30 @@ form.addEventListener('keydown', function (e) {
       newLink.textContent = "link";
       newLink.target = "_blank";
       newCard.appendChild(newLink);
-    }
+    };
     if (userImageInput.value) {
       let newImage = document.createElement("img");
       newImage.src = userImageInput.value;
       newImage.alt = "user input";
       newCard.appendChild(newImage);
-    }
+    };
     newCard.classList.add("bulletin-card");
     newCard.style.top = `${mouseY}px`;
     newCard.style.left = `${mouseX - 50}px`;
+    
+    // ****
+
+    // add card to database for this user/group
+    
+    // ****
     board.appendChild(newCard);
-    form.classList.add("hide");
-    userHeadingInput.value = "";
-    userContentInput.value = "";
-    userLinkInput.value = "";
-    userImageInput.value = "";
+    reset();
   }
 });
 
 formCloseIcon.addEventListener('click', function () {
   form.classList.add("hide");
-})
+});
 
 linkIcon.addEventListener("click", function () {
   let linkBoxHeight = userLinkInput.style.height;
@@ -109,10 +111,9 @@ linkIcon.addEventListener("click", function () {
     linkBoxHeight = "2.5rem";
     userLinkInput.style.visibility = "visible";
     userLinkInput.style.marginTop = "1rem";
-
-  }
+  };
   userLinkInput.style.height = linkBoxHeight;
-})
+});
 
 cameraIcon.addEventListener("click", function () {
   let imageBoxHeight = userImageInput.style.height;
@@ -124,6 +125,14 @@ cameraIcon.addEventListener("click", function () {
     imageBoxHeight = "2.5rem";
     userImageInput.style.visibility = "visible";
     userImageInput.style.marginTop = "1rem";
-  }
+  };
   userImageInput.style.height = imageBoxHeight;
-})
+});
+
+function reset() {
+  form.classList.add("hide");
+  userHeadingInput.value = "";
+  userContentInput.value = "";
+  userLinkInput.value = "";
+  userImageInput.value = "";
+};
