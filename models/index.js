@@ -5,6 +5,7 @@ const Card = require('./Card');
 const Bulletin = require('./Bulletin');
 const Chat = require('./Chat');
 const Group = require('./Group');
+const GroupUser = require('./GroupUser');
 
 Group.hasOne(Chat, {
   foreignKey: 'group_id',
@@ -30,12 +31,52 @@ Bulletin.belongsTo(Group, {
   foreignKey: 'group_id',
 });
 
-Group.hasMany(User, {
-  foreignKey: 'group_id',
+Group.belongsToMany(User, {
+  through: {
+    model: GroupUser,
+    unique: false,
+  },
+  as: 'users',
 });
 
-User.belongsTo(Group, {
-  foreignKey: 'group_id',
+User.belongsToMany(Group, {
+  through: {
+    model: GroupUser,
+    unique: false,
+  },
+  as: 'groups',
+});
+
+Group.belongsToMany(Role, {
+  through: {
+    model: GroupUser,
+    unique: false,
+  },
+  as: 'role',
+});
+
+Role.belongsToMany(Group, {
+  through: {
+    model: GroupUser,
+    unique: false,
+  },
+  as: 'groups',
+});
+
+Role.belongsToMany(User, {
+  through: {
+    model: GroupUser,
+    unique: false,
+  },
+  as: 'users',
+});
+
+User.belongsToMany(Role, {
+  through: {
+    model: GroupUser,
+    unique: false,
+  },
+  as: 'roles',
 });
 
 User.hasMany(Card, {
@@ -62,13 +103,6 @@ Card.belongsTo(Bulletin, {
   foreignKey: 'bulletin_id',
 });
 
-Role.hasMany(User, {
-  foreignKey: 'role_id',
-});
-
-User.belongsTo(Role, {
-  foreignKey: 'role_id',
-});
 
 module.exports = {
   Bulletin,
@@ -77,5 +111,6 @@ module.exports = {
   Comment,
   Group,
   Role,
-  User
+  User,
+  GroupUser
 };

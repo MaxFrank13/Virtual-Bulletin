@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Bulletin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <header class="hero columns">
+    <div class="hero-body column">
+      <nav class="navbar column" role="navigation" aria-label="main navigation">
+        <div class="nav-menu">
+          <div class="navbar-item title">
+            <a class="button is-large is-outlined is-dark" href="/">
+              Virtual Bulletins
+            </a>
+        {{#if logged_in}}
+            <a id="dashboard" class="navbar-item button is-info is-light is-outlined" href="/dashboard">dashboard</a>
+            <a id="logout" class="navbar-item button is-danger is-light is-outlined">logout</a>
+        {{else}}
+            <a id="login" class="navbar-item button is-info is-light" href="/login">login</a>
+        {{/if}}
+          </div>
+          <p class="subtitle">Make bulletins to share resources with your team</p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Render the sub layout -->
+    {{{ body }}}
+  </main>
+  <footer>
+
+  </footer>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>

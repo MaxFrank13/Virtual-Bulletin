@@ -1,31 +1,11 @@
 const router = require('express').Router();
-const { User, Group, Role } = require('../../models');
-
-// get user by ID
-router.get('/', async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      include: [
-        {
-          model: Group,
-        },
-        {
-          model: Role,
-        },
-      ],
-    });
-
-    res.status(200).json(userData);
-  } catch(err) {
-    res.status(400).json(err);
-  }
-});
+const { User, Group, Role, GroupUser } = require('../../models');
 
 // creates a user and hashes their password before saving to database
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
-    
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -37,6 +17,35 @@ router.post('/', async (req, res) => {
   };
 });
 
+// get all users
+router.get('/all', async (req, res) => {
+  try {
+    const userData = await User.findAll({
+      attributes: {
+        exclude: ['role_id'],
+      },
+      include: [
+        {
+          model: Group,
+          through: GroupUser,
+          as: 'groups',
+          include: [
+            {
+              model: Role,
+              through: GroupUser,
+              as: 'role',
+            },
+          ]
+        },
+      ],
+    });
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // edit a user's info (i.e. name, add/remove group affiliations)
 router.put('/', async (req, res) => {
   try {
@@ -44,8 +53,8 @@ router.put('/', async (req, res) => {
 
     res.status(200).json(userData);
 
-  } catch(err) {
-
+  } catch (err) {
+    res.status(400).json(err);
   };
 });
 
@@ -73,7 +82,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 

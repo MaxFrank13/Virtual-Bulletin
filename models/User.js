@@ -41,21 +41,6 @@ User.init(
       unique: false,
       defaultValue: './public/assets/images/default_profile.png',
     },
-    group_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'group',
-        key: 'id',
-      },
-    },
-    role_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'role',
-        key: 'id',
-      },
-      defaultValue: 1,
-    },
 	},
 	{
 		hooks: {

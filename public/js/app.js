@@ -45,10 +45,12 @@ board.addEventListener('click', (e) => {
 addBtn.addEventListener('click', function (e) {
   if (placingContent) {
     placingContent = false;
-    addBtn.classList.remove("active");
+    addBtn.classList.remove("is-light");
+    addBtn.textContent = "create new post"
   } else {
     placingContent = true;
-    addBtn.classList.add("active");
+    addBtn.classList.add("is-light");
+    addBtn.textContent = "cancel"
   };
 });
 

@@ -2,6 +2,7 @@ const { sequelize } = require('../models/User');
 const seedUsers = require('./userSeeds');
 const seedGroups = require('./groupSeeds');
 const seedRoles = require('./roleSeeds');
+const seedGroupUser = require('./groupUserSeeds');
 
 const seedDataBase = async () => {
   await sequelize.sync({ force: true });
@@ -15,6 +16,9 @@ const seedDataBase = async () => {
 
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n')
+
+  await seedGroupUser();
+  console.log('\n----- GROUPUSER SEEDED -----\n')
 
   process.exit(0);
 };
