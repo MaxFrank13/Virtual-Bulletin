@@ -2,10 +2,9 @@
       <article class="tile is-child">
         <h3 class="tag is-large is-dark">Your groups</h3>
         <span class="tags are-medium">
-          <span class="tag is-info is-outlined">the Troubadours</span>
-          <span class="tag is-info is-outlined">the Wombats</span>
-          <span class="tag is-info is-outlined">the Jets</span>
-          <span class="tag is-info is-outlined">the Sharks</span>
+          {{#each groups as |group|}}
+          <span class="tag is-info is-outlined">{{group.group_name}}</span>
+          {{/each}}
         </span>
       </article>
       <article class="tile is-child">
