@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET route for the home page
@@ -19,10 +20,17 @@ router.get('/login', (req, res) => {
 });
 
 // GET dashboard
-router.get('/dashboard', withAuth, (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
+	const userData = await User.findByPk(req.session.user_id, {
+		attributes: { exclude: ['password'] },
+		// include other user information Groups, Bulletins, Invitations
+	});
+	const user = userData.get({ plain: true });
+
 	res.render('dashboard', {
-		logged_in: req.session.logged_in,
-	})
+		...user,
+		logged_in: req.session.logged_in
+	});
 });
 
 

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Group, Role, GroupUser } = require('../../models');
+const { User, Group, Role, GroupUser, Invitation } = require('../../models');
 
 // creates a user and hashes their password before saving to database
 router.post('/', async (req, res) => {
@@ -37,6 +37,9 @@ router.get('/all', async (req, res) => {
             },
           ]
         },
+        {
+          model: Invitation,
+        }
       ],
     });
 

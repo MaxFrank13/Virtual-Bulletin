@@ -1,0 +1,28 @@
+<section class="group-interface">
+  <h1 class="title is-2">{{group_name}}</h1>
+  <section class="user-interface">
+    <section class="btn-container">
+      <button class="button is-info create-bulletin">create bulletin</button>
+      <button class="button is-info invite-member">invite new member</button>
+      <button class="button is-info group settings">group settings</button>
+    </section>
+    <ul class="member-list">
+      <h3 class="title is-4">Members:</h3>
+      {{#each users as |user|}}
+      <li class="subtitle is-5">{{user.name}}</li>
+      {{/each}}
+    </ul>
+    <ul class="bulletin-list">
+      <h3 class="title is-5">Group Bulletins:</h3>
+      {{!-- {{#each bulletins as |bulletin|}} --}}
+      <li class="subtitle is-5">bulletin title here</li>
+      <li class="subtitle is-5">bulletin title here</li>
+      <li class="subtitle is-5">bulletin title here</li>
+      <li class="subtitle is-5">bulletin title here</li>
+      <li class="subtitle is-5">bulletin title here</li>
+      {{!-- {{/each}} --}}
+    </ul>
+  </section>
+</section>
+
+<script src="/js/group.js"></script>

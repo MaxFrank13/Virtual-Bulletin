@@ -1,8 +1,41 @@
-    <div class="tile is-parent is-8">
-      <h2>action panel</h2>
-      <ul>
-        <li>Create Group</li>
-        <li>Create Bulletin</li>
-        <li>Settings and preferences (i.e change account info)</li>
-      </ul>
+<div class="tile is-parent is-7 action-panel">
+  <button data-name="group" class="button is-link create">Create new group</button>
+  <form class="hide group column">
+    <div class="field">
+      <label class="label">Group Name</label>
+      <div class="control has-icons-left has-icons-right">
+        <input id="group-name" class="input" type="text" placeholder="enter group name here">
+        <span class="icon is-small is-left">
+          <i class="fa-solid fa-people-group"></i>
+        </span>
+      </div>
     </div>
+
+    <button class="button is-success">Create</button>
+  </form>
+
+  <button data-name="bulletin" class="button is-link create">Create new bulletin</button>
+
+  <form class="hide bulletin column">
+    <div class="field">
+      <label class="label">Bulletin Name</label>
+      <div class="control has-icons-left has-icons-right">
+        <input id="bulletin-name" class="input" type="text" placeholder="bulletin name here">
+        <span class="icon is-small is-left">
+          <i class="fa-solid fa-file-signature"></i>
+        </span>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Group Name</label>
+      <div class="control has-icons-left has-icons-right">
+        <input id="group-verify" class="input" type="text" placeholder="group name here">
+        <span class="icon is-small is-left">
+          <i class="fa-solid fa-people-group"></i>
+        </span>
+      </div>
+    </div>
+
+    <button class="button is-success">Create</button>
+  </form>
+</div>

@@ -6,6 +6,7 @@ const Bulletin = require('./Bulletin');
 const Chat = require('./Chat');
 const Group = require('./Group');
 const GroupUser = require('./GroupUser');
+const Invitation = require('./Invitation');
 
 Group.hasOne(Chat, {
   foreignKey: 'group_id',
@@ -103,6 +104,22 @@ Card.belongsTo(Bulletin, {
   foreignKey: 'bulletin_id',
 });
 
+User.hasMany(Invitation, {
+  foreignKey: 'user_id',
+});
+
+Invitation.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+Group.hasMany(Invitation, {
+  foreignKey: 'group_id',
+});
+
+Invitation.belongsTo(Group, {
+  foreignKey: 'group_id',
+});
+
 
 module.exports = {
   Bulletin,
@@ -112,5 +129,6 @@ module.exports = {
   Group,
   Role,
   User,
-  GroupUser
+  GroupUser,
+  Invitation
 };
