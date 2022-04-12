@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Group, GroupUser, User, Role, Bulletin } = require('../models');
+const { Group, GroupUser, User, Role, Bulletin, Card } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET route to display group info (i.e. the groups they belong to) for user's dashboard
@@ -11,6 +11,9 @@ router.get('/all', async (req, res) => {
           model: User,
           through: GroupUser,
           as: 'users',
+          attributes: {
+            exclude: ['password'],
+          },
         },
       ],
     });
@@ -24,7 +27,7 @@ router.get('/all', async (req, res) => {
 });
 
 
-// GET group by its name
+// GET group by its id
 router.get('/:id', async (req, res) => {
   try {
     const groupData = await Group.findByPk(req.params.id, {
@@ -33,9 +36,17 @@ router.get('/:id', async (req, res) => {
           model: User,
           through: GroupUser,
           as: 'users',
+          attributes: {
+            exclude: ['password'],
+          },
         },
         {
           model: Bulletin,
+          include: [
+            {
+              model: Card,
+            },
+          ],
         },
       ],
     });

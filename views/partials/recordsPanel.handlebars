@@ -3,21 +3,16 @@
         <h3 class="tag is-large is-dark">Your groups</h3>
         <span class="tags are-medium">
           {{#each groups as |group|}}
-          <span class="tag is-info is-outlined">{{group.group_name}}</span>
+          <span data-type="group" data-id="{{group.id}}" class="tag is-info is-outlined">{{group.group_name}}</span>
           {{/each}}
         </span>
       </article>
       <article class="tile is-child">
         <h3 class="tag is-large is-dark">Your bulletins</h3>
         <span class="tags are-medium">
-          <span class="tag is-info is-outlined">kitchen app</span>
-          <span class="tag is-info is-outlined">quiz app</span>
-          <span class="tag is-info is-outlined">flying monkeys</span>
-          <span class="tag is-info is-outlined">mashed potatoes</span>
-          <span class="tag is-info is-outlined">movie finder</span>
-          <span class="tag is-info is-outlined">pixel art game</span>
-          <span class="tag is-info is-outlined">microsoft paint clone</span>
-          <span class="tag is-info is-outlined">beer review app</span>
+          {{#each bulletins as |bulletin|}}
+          <span data-type="bulletin" data-id="{{bulletin.id}}" class="tag is-info is-outlined">{{bulletin.bulletin_name}}</span>
+          {{/each}}
         </span>
       </article>
     </div>

@@ -22,7 +22,7 @@ router.get('/all', async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: {
-        exclude: ['role_id'],
+        exclude: ['role_id', 'password'],
       },
       include: [
         {

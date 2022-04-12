@@ -1,7 +1,21 @@
-    <div class="messages-panel">
-      <p>
-        <i class="fa-solid fa-message">
-        </i>
-        You have <a href="/">{{invitations.length}} group invitations!</a>
+    <div class="messages-panel tile is-vertical">
+      <p class="level">
+      <i class="fa-solid fa-message"></i>
+        You have
+      {{#if invitations.length}}
+        <button class="button is-success invites" href="/">
+          {{invitations.length}} group invitations!
+        </button>
+      </p>
+      <section class="hide messages">
+        {{#each invitations as |invitation|}}
+        <p>{{invitation.message}}</p>
+        {{/each}}
+      </section>
+      {{else}}
+        <button class="button is-success is-light">
+          no invitations today
+        </button>
       </p> 
+      {{/if}}
     </div>

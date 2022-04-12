@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Group, GroupUser, Bulletin, Invitation } = require('../models');
+const { User, Group, GroupUser, Bulletin, Invitation, Card } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET route for the home page
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // path to a login page if the user is not already logged in
 router.get('/login', (req, res) => {
 	if (req.session.logged_in) {
-		res.redirect('/profile');
+		res.redirect('/dashboard');
 		return;
 	};
 
@@ -32,8 +32,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
 				include: [
 					{
 						model: Bulletin,
-					}
-				]
+						include: [
+							{
+								model: Card,
+							},
+						],
+					},
+				],
 			},
 			{
 				model: Invitation,
@@ -45,7 +50,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 	const bulletins = user.groups.reduce((array, group) => {
 		return array.concat(group.bulletins); 
 	}, []);
-	console.log(user.invitations.length);
 
 	res.render('dashboard', {
 		...user,

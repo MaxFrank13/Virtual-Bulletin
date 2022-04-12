@@ -5,6 +5,9 @@ const roleData = [
     "role_name": "Contributor"
   },
   {
+    "role_name": "Creator"
+  },
+  {
     "role_name": "Viewer"
   },
 ];

@@ -1,19 +1,23 @@
-  <section class="board">
+<section class="board">
+  <section class="menu">
     <button class="navbar-item button is-success add">create new post</button>
-    {{!-- add a button to toggle chatPanel --}}
-    {{> chatPanel}}
-    <form class="post hide">
-      <div class="icon-container">
-        <i class="fas fa-camera camera-icon"></i>
-        <i class="fas fa-link link-icon"></i>
-        <i class="fas fa-window-close form-close"></i>
-      </div>
-      <textarea id="heading" name="heading" placeholder="heading"></textarea>
-      <textarea id="content" name="content" rows="10" columns="35" placeholder="description/notes/content"></textarea>
-      <textarea id="link" name="link" placeholder="insert your link here"></textarea>
-      <textarea id="image" name="image" placeholder="insert an image address here"></textarea>
-    </form>
-
+    <h2 class="title is-3">{{bulletin_name}}</h2>
   </section>
+  {{!-- add a button to toggle chatPanel --}}
 
-    <script src="/js/app.js"></script>
+  {{> chatPanel}}
+  <form class="post hide">
+    <div class="icon-container">
+      <i class="fas fa-camera camera-icon"></i>
+      <i class="fas fa-link link-icon"></i>
+      <i class="fas fa-window-close form-close"></i>
+    </div>
+    <textarea id="heading" name="heading" placeholder="heading"></textarea>
+    <textarea id="content" name="content" rows="10" columns="35" placeholder="description/notes/content"></textarea>
+    <textarea id="link" name="link" placeholder="insert your link here"></textarea>
+    <textarea id="image" name="image" placeholder="insert an image address here"></textarea>
+  </form>
+
+</section>
+
+<script src="/js/app.js"></script>

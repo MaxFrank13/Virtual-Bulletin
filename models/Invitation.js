@@ -14,6 +14,10 @@ Invitation.init(
     },
     message: {
       type: DataTypes.STRING,
+      defaultValue: 'Invite to join'
+    },
+    user_accepted: {
+      type: DataTypes.BOOLEAN,
     },
     group_id: {
       type: DataTypes.INTEGER,
