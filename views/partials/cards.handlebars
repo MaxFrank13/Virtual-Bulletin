@@ -1,0 +1,18 @@
+{{#each cards as |card|}}
+<div class="bulletin-card" data-id="{{card.id}}" style="top:{{card.position_top}}px; left:{{card.position_left}}px;">
+  <div class="icon-container">
+    <i class="fas fa-edit edit-icon"></i>
+    <i class="fas fa-window-close close-icon"></i>
+  </div>
+  <div class="content-container">
+    <h3 class="card-title">{{card.header}}</h3>
+    <p class="card-body">{{card.content}}</p>
+    {{#if card.link}}
+    <a href="{{card.link}}" target="_blank">link</a>
+    {{/if}}
+    {{#if card.image}}
+    <img src="{{card.image}}" alt="card-image for {{card.header}}">
+    {{/if}}
+  </div>
+</div>
+{{/each}}

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Bulletin, Card } = require('../models');
+const { Bulletin, Card, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get a blank bulletin
@@ -20,6 +20,14 @@ router.get('/:id', withAuth, async (req, res) => {
       include: [
         {
           model: Card,
+          include: [
+            {
+              model: User,
+              attributes: {
+                exclude: ['password'],
+              },
+            },
+          ],
         },
       ],
     });

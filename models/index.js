@@ -53,7 +53,7 @@ Group.belongsToMany(Role, {
     model: GroupUser,
     unique: false,
   },
-  as: 'role',
+  as: 'roles',
 });
 
 Role.belongsToMany(Group, {

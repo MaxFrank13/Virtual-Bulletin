@@ -1,4 +1,4 @@
-<section class="board">
+<section class="board" data-id="{{id}}" >
   <section class="menu">
     <button class="navbar-item button is-success add">create new post</button>
     <h2 class="title is-3">{{bulletin_name}}</h2>
@@ -6,6 +6,7 @@
   {{!-- add a button to toggle chatPanel --}}
 
   {{> chatPanel}}
+  {{> cards}}
   <form class="post hide">
     <div class="icon-container">
       <i class="fas fa-camera camera-icon"></i>
@@ -16,6 +17,7 @@
     <textarea id="content" name="content" rows="10" columns="35" placeholder="description/notes/content"></textarea>
     <textarea id="link" name="link" placeholder="insert your link here"></textarea>
     <textarea id="image" name="image" placeholder="insert an image address here"></textarea>
+    <button class="button is-success is-outlined">add</button>
   </form>
 
 </section>

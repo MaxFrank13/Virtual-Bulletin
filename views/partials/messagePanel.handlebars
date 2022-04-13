@@ -2,16 +2,36 @@
       <p class="level">
       <i class="fa-solid fa-message"></i>
         You have
-      {{#if invitations.length}}
+      {{#if invites.length}}
         <button class="button is-success invites" href="/">
-          {{invitations.length}} group invitations!
+          {{invites.length}} group invitation(s)!
         </button>
       </p>
-      <section class="hide messages">
-        {{#each invitations as |invitation|}}
-        <p>{{invitation.message}}</p>
+      <table class="hide messages table">
+        <thead>
+          <tr>
+            <th>Message</th>
+            <th>Group</th>
+            <th>Accept?</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each invites as |invite|}}
+          <tr>
+            <td>{{invite.message}}</td>
+            <td>{{invite.group.group_name}}</td>
+            <td class="columns" data-id="{{invite.id}}" data-group_id="{{invite.group.id}}">
+              <span class="column icon has-text-success">
+                <i class="fa-solid fa-circle-check"></i>
+              </span>
+              <span class="column icon has-text-danger">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </span>
+            </td>
+          </tr>
         {{/each}}
-      </section>
+        </tbody>
+      </table>
       {{else}}
         <button class="button is-success is-light">
           no invitations today

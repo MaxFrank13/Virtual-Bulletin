@@ -14,6 +14,13 @@ router.get('/all', async (req, res) => {
           attributes: {
             exclude: ['password'],
           },
+          include: [
+            {
+              model: Role,
+              through: GroupUser,
+              as: 'roles',
+            },
+          ],
         },
       ],
     });
@@ -39,6 +46,13 @@ router.get('/:id', async (req, res) => {
           attributes: {
             exclude: ['password'],
           },
+          include: [
+            {
+              model: Role,
+              through: GroupUser,
+              as: 'roles',
+            },
+          ],
         },
         {
           model: Bulletin,
@@ -52,6 +66,8 @@ router.get('/:id', async (req, res) => {
     });
 
     const group = groupData.get({ plain: true });
+
+    // const {role_name} = group.roles[0];
 
     // res.status(200).json(group);
 
@@ -74,6 +90,7 @@ router.post('/', withAuth, async (req, res) => {
     const newGroupUser = await GroupUser.create({
       group_id: newGroup.id,
       user_id: req.session.user_id,
+      role_id: 2,
     });
 
     res.status(200).json({

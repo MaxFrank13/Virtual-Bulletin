@@ -53,12 +53,17 @@
     <ul class="member-list">
       <h3 class="title is-4">Members:</h3>
       {{#each users as |user|}}
-      <li class="subtitle is-5">{{user.name}}</li>
+      <li class="subtitle is-5">
+        {{user.name}}
+        {{#each user.roles as |role|}}
+        <small>{{role.role_name}}</small>
+        {{/each}}
+      </li>
       {{/each}}
     </ul>
 
     <ul class="bulletin-list">
-      <h3 class="title is-5">Group Bulletins:</h3>
+      <h3 class="title is-4">Group Bulletins:</h3>
       {{#each bulletins as |bulletin|}}
       <li class="subtitle is-5">{{bulletin.bulletin_name}}</li>
       {{/each}}

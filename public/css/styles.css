@@ -48,6 +48,10 @@ img {
   width: 100%;
 }
 
+button.button.is-info {
+  margin-bottom: 0.2rem;
+}
+
 button.button:hover {
   filter: brightness(1.2);
 }
@@ -82,7 +86,7 @@ section.menu h2 {
 
 /* ==== Input Form ==== */
 
-.post {
+form.post {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -93,6 +97,12 @@ section.menu h2 {
   border: 2px solid var(--grey-45);
   border-radius: 0.25rem;
   border-top-left-radius: 4rem;
+}
+
+form.post button.button {
+  margin: 1rem auto 0;
+  padding: 0 1.5rem;
+  border-radius: 4rem;
 }
 
 section.form-container {
@@ -119,9 +129,10 @@ section.form-container > * {
 .icon-container *:hover {
   transform: scale(1.2);
 }
-.close-icon {
+.close-icon,
+.form-close {
   text-align: right;
-  color: #d93f3f;
+  color: #e84f4f;
 }
 textarea {
   background: var(--grey-50);
@@ -179,12 +190,21 @@ div.messages-panel > p {
   border-bottom-left-radius: 0.2rem;
 }
 
-section.messages {
-  animation: dropdown 0.5s;
+table.table.messages {
+  animation: dropdown 1s;
+}
+
+table.table.messages i {
+  font-size: 1.3rem;
+}
+table.table.messages i:hover{
+  cursor: pointer;
+  filter: brightness(1.2);
 }
 
 div.tile.action-panel {
-  padding: 2rem 0;
+  margin: auto;
+  padding: 2rem;
   align-items: center;
   justify-content: start;
   flex-direction: column;
@@ -215,6 +235,7 @@ span[data-type="bulletin"]:hover {
 
 /* ==== Group dashboard ==== */
 
+
 section.group-interface {
   display: grid;
   place-items: center;
@@ -224,11 +245,17 @@ section.group-interface {
 section.user-interface {
   display: flex;
   gap: 5rem;
+  min-width: 360px;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   box-shadow: 0 0 55px 5px var(--grey-40);
   padding: 2.5rem;
   animation: dropdown 0.7s;
+}
+
+section.user-interface ul.member-list li {
+  display: flex;
+  flex-direction: column;
 }
 
 section.btn-container {
@@ -267,13 +294,13 @@ a.navbar-item {
 
 /* Media Queries */
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 765px) {
   section.user-interface {
     flex-direction: column;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
     .hero {
       flex-direction: row;
       align-items: center;
@@ -299,10 +326,21 @@ a.navbar-item {
     height: 100%;
   }
 }
+@keyframes fade-in {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 1;
+    margin-top: 0%;
+    height: 100%;
+  }
+}
 
 
 /* hide class always at bottom */
 .hide {
-  display: none;
+  display: none !important;
 }
 

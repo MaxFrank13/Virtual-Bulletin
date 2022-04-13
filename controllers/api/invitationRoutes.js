@@ -1,5 +1,6 @@
 // routes for storing and passing invitations
 const router = require('express').Router();
+const { json } = require('express/lib/response');
 const { User, Group, GroupUser, Invitation } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -28,19 +29,55 @@ router.post('/', withAuth, async (req, res) => {
   };
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+// PUT to assign the 'accepted' boolean value
+router.put('/:id', withAuth, async (req, res) => {
   try {
-    const inviteData = await Invitation.destroy({
-      where: {
-        id: req.params.id
+    const invitationData = await Invitation.update(
+      {
+        user_accepted: req.body.user_accepted,
       },
-    });
+      {
+        where:
+        {
+          id: req.params.id,
+        },
+      },
+    );
 
-    res.status(200).json(inviteData);
+    if (req.body.user_accepted) {
+      const newGroupUser = await GroupUser.create({
+        user_id: req.session.user_id,
+        group_id: req.body.group_id,
+      });
+      res.status(200).json({
+        invitationData,
+        newGroupUser
+        });
+    } else {
+      res.status(200).json(invitationData);
+    };
 
   } catch (err) {
     res.status(500).json(err);
   };
 });
+
+// DELETE invitation by id
+router.delete('/:id', async (req, res) => {
+  try {
+    const deleteInvite = await Invitation.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    res.status(200).json(deleteInvite);
+
+  } catch (err) {
+    res.status(500).json(err);
+  };
+});
+
+
 
 module.exports = router;

@@ -64,6 +64,33 @@ const handlePanelClick = async (e) => {
   }
 };
 
+const handleInviteResponse = async (e) => {
+  let user_accepted;
+  if (e.target.classList.contains('fa-circle-check')) {
+    user_accepted = true;
+  } else if (e.target.classList.contains('fa-circle-xmark')) {
+    user_accepted = false;
+  } else {
+    return;
+  }
+  const id = e.target.parentElement.parentElement.dataset.id;
+  const group_id = e.target.parentElement.parentElement.dataset.group_id;
+  const response = await fetch(`/api/invitation/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      user_accepted,
+      group_id,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  };
+};
+
 const toggleInviteMessages = (e) => {
   if (e.target.classList.contains('invites'))
   document.querySelector('.messages').classList.toggle('hide');
@@ -90,5 +117,9 @@ document
 document
   .querySelector('.messages-panel')
   .addEventListener('click', toggleInviteMessages);
+
+document
+  .querySelector('.messages-panel')
+  .addEventListener('click', handleInviteResponse);
 
 

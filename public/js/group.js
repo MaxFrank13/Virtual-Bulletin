@@ -24,15 +24,14 @@ const handleBulletinSubmit = async (e) => {
 
 const handleInvite = async (e) => {
   e.preventDefault();
-  const groupName = document.querySelector('section.group-interface h1.title').textContent;
   const email = document.querySelector('#invite-email').value.trim();
-  const messageContent = document.querySelector('#message-input').value.trim();
+  const message = document.querySelector('#message-input').value.trim();
 
   const response = await fetch(`/api/invitation`, {
     method: 'POST',
     body: JSON.stringify({
       email,
-      message: `${groupName} | ${messageContent}`,
+      message,
       group_id,
     }),
     headers: {

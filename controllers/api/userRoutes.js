@@ -29,13 +29,11 @@ router.get('/all', async (req, res) => {
           model: Group,
           through: GroupUser,
           as: 'groups',
-          include: [
-            {
-              model: Role,
-              through: GroupUser,
-              as: 'role',
-            },
-          ]
+        },
+        {
+          model: Role,
+          through: GroupUser,
+          as: 'roles',
         },
         {
           model: Invitation,

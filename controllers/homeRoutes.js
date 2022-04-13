@@ -23,7 +23,6 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
 	const userData = await User.findByPk(req.session.user_id, {
 		attributes: { exclude: ['password'] },
-		// include other user information Groups, Bulletins, Invitations
 		include: [
 			{
 				model: Group,
@@ -42,8 +41,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
 			},
 			{
 				model: Invitation,
-			}
-		]
+				include: [
+					{
+						model: Group,
+					},
+				],
+			},
+		],
 	});
 	const user = userData.get({ plain: true });
 
@@ -51,8 +55,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
 		return array.concat(group.bulletins); 
 	}, []);
 
+	const invites = user.invitations.filter(invite => invite.user_accepted === null);
+
 	res.render('dashboard', {
 		...user,
+		invites,
 		bulletins,
 		logged_in: req.session.logged_in
 	});
