@@ -1,15 +1,27 @@
 <section class="group-interface" data-id="{{id}}">
   <h1 class="title is-2">{{group_name}}</h1>
   <section class="user-interface">
+
+    <ul class="member-list">
+      <h3 class="title is-4">Members:</h3>
+      {{#each users as |user|}}
+      <li class="tag is-info subtitle is-5">
+        {{user.name}}
+        {{#each user.roles as |role|}}
+        <small class="tag is-danger">{{role.role_name}}</small>
+        {{/each}}
+      </li>
+      {{/each}}
+    </ul>
     <section class="btn-container">
 
-      <button data-name="Create bulletin" class="button is-info create-bulletin">Create bulletin</button>
+      <button data-name="Create bulletin" class="button is-link create-bulletin">Create bulletin</button>
       <form class="hide bulletin column">
 
         <div class="field">
           <label class="label">Bulletin Name</label>
           <div class="control has-icons-left has-icons-right">
-            <input id="bulletin-name" class="input" type="text" placeholder="enter bulletin name here">
+            <input id="bulletin-name" class="input" type="text" placeholder="enter bulletin name">
             <span class="icon is-small is-left">
               <i class="fa-solid fa-file-signature"></i>
             </span>
@@ -20,7 +32,7 @@
 
       </form>
 
-      <button data-name="Invite new member" class="button is-info invite-member">Invite new member</button>
+      <button data-name="Invite new member" class="button is-link invite-member">Invite new member</button>
       <form class="hide invite-member column">
 
         <div class="field">
@@ -44,32 +56,20 @@
 
       </form>
 
-      <button data-name="Group settings" class="button is-info group settings">Group settings</button>
+      <button data-name="Group settings" class="button is-link group settings">Group settings</button>
       <form class="hide group-settings column">
         <h4>here will be some group settings</h4>
       </form>
     </section>
 
-    <ul class="member-list">
-      <h3 class="title is-4">Members:</h3>
-      {{#each users as |user|}}
-      <li class="subtitle is-5">
-        {{user.name}}
-        {{#each user.roles as |role|}}
-        <small>{{role.role_name}}</small>
-        {{/each}}
-      </li>
-      {{/each}}
-    </ul>
-
     <ul class="bulletin-list">
-      <h3 class="title is-4">Group Bulletins:</h3>
+      <h3 class="title is-4">Bulletins:</h3>
       {{#each bulletins as |bulletin|}}
-      <li class="subtitle is-5">{{bulletin.bulletin_name}}</li>
+      <li data-type="bulletin" data-id="{{bulletin.id}}" class="button is-link subtitle is-6">{{bulletin.bulletin_name}}</li>
       {{/each}}
     </ul>
   </section>
 </section>
 
-<script src="/js/toggleForm.js"></script>
+<script src="/js/utils.js"></script>
 <script src="/js/group.js"></script>

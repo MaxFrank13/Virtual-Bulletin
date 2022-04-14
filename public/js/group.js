@@ -19,7 +19,7 @@ const handleBulletinSubmit = async (e) => {
 
   if (response.ok) {
     document.location.replace(`/bulletin/${data.id}`)
-  }
+  };
 };
 
 const handleInvite = async (e) => {
@@ -43,6 +43,10 @@ const handleInvite = async (e) => {
     document.location.reload();
   };
 };
+
+document
+  .querySelector('.bulletin-list')
+  .addEventListener('click', handlePanelClick);
 
 document
   .querySelector('.bulletin')

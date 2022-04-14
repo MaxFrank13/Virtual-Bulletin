@@ -26,6 +26,7 @@ Comment.belongsTo(Chat, {
 
 Group.hasMany(Bulletin, {
   foreignKey: 'group_id',
+  onDelete: 'SET NULL',
 });
 
 Bulletin.belongsTo(Group, {
@@ -48,36 +49,22 @@ User.belongsToMany(Group, {
   as: 'groups',
 });
 
-Group.belongsToMany(Role, {
-  through: {
-    model: GroupUser,
-    unique: false,
-  },
-  as: 'roles',
+Group.hasMany(Role, {
+  foreignKey: 'group_id',
+  onDelete: 'CASCADE',
 });
 
-Role.belongsToMany(Group, {
-  through: {
-    model: GroupUser,
-    unique: false,
-  },
-  as: 'groups',
+Role.belongsTo(Group, {
+  foreignKey: 'group_id',
 });
 
-Role.belongsToMany(User, {
-  through: {
-    model: GroupUser,
-    unique: false,
-  },
-  as: 'users',
+Role.belongsTo(User, {
+  foreignKey: 'user_id',
 });
 
-User.belongsToMany(Role, {
-  through: {
-    model: GroupUser,
-    unique: false,
-  },
-  as: 'roles',
+User.hasMany(Role, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
 User.hasMany(Card, {
@@ -98,6 +85,7 @@ Comment.belongsTo(User, {
 
 Bulletin.hasMany(Card, {
   foreignKey: 'bulletin_id',
+  onDelete: 'SET NULL',
 });
 
 Card.belongsTo(Bulletin, {
@@ -106,6 +94,7 @@ Card.belongsTo(Bulletin, {
 
 User.hasMany(Invitation, {
   foreignKey: 'user_id',
+  onDelete: 'CASCADE',
 });
 
 Invitation.belongsTo(User, {
@@ -114,6 +103,7 @@ Invitation.belongsTo(User, {
 
 Group.hasMany(Invitation, {
   foreignKey: 'group_id',
+  onDelete: 'CASCADE',
 });
 
 Invitation.belongsTo(Group, {

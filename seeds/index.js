@@ -11,8 +11,8 @@ const seedDataBase = async () => {
   // await seedGroups();
   // console.log('\n----- GROUPS SEEDED -----\n')
 
-  await seedRoles();
-  console.log('\n----- ROLES SEEDED -----\n')
+  // await seedRoles();
+  // console.log('\n----- ROLES SEEDED -----\n')
 
   // await seedUsers();
   // console.log('\n----- USERS SEEDED -----\n')

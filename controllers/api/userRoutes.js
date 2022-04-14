@@ -22,18 +22,13 @@ router.get('/all', async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: {
-        exclude: ['role_id', 'password'],
+        exclude: ['password'],
       },
       include: [
         {
           model: Group,
           through: GroupUser,
           as: 'groups',
-        },
-        {
-          model: Role,
-          through: GroupUser,
-          as: 'roles',
         },
         {
           model: Invitation,

@@ -13,3 +13,18 @@ const toggleForm = (e) => {
   e.target.classList.remove('is-danger');
   e.target.textContent = btnFunction;
 };
+
+const handlePanelClick = async (e) => {
+  const id = e.target.dataset.id;
+  const type = e.target.dataset.type;
+
+  switch(type) {
+    case 'group':
+      document.location.replace(`/group/${id}`);
+      break;
+    case 'bulletin':
+      document.location.replace(`/bulletin/${id}`);
+      break;
+    default: 
+  }
+};

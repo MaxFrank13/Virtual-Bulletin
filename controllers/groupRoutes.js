@@ -8,17 +8,13 @@ router.get('/all', async (req, res) => {
     const groupData = await Group.findAll({
       include: [
         {
-          model: User,
-          through: GroupUser,
-          as: 'users',
-          attributes: {
-            exclude: ['password'],
-          },
+          model: Role,
           include: [
             {
-              model: Role,
-              through: GroupUser,
-              as: 'roles',
+              model: User,
+              attributes: {
+                exclude: ['password'],
+              },
             },
           ],
         },
@@ -49,10 +45,11 @@ router.get('/:id', async (req, res) => {
           include: [
             {
               model: Role,
-              through: GroupUser,
-              as: 'roles',
-            },
-          ],
+              where: {
+                group_id: req.params.id,
+              }
+            }
+          ]
         },
         {
           model: Bulletin,
@@ -63,18 +60,17 @@ router.get('/:id', async (req, res) => {
           ],
         },
       ],
+
     });
 
     const group = groupData.get({ plain: true });
-
-    // const {role_name} = group.roles[0];
 
     // res.status(200).json(group);
 
     res.render('group', {
       ...group,
       logged_in: req.session.logged_in
-    })
+    });
   } catch(err) {
     res.status(500).json(err);
   };
@@ -90,19 +86,56 @@ router.post('/', withAuth, async (req, res) => {
     const newGroupUser = await GroupUser.create({
       group_id: newGroup.id,
       user_id: req.session.user_id,
-      role_id: 2,
     });
+
+    const newRole = await Role.create({
+      role_name: 'Creator',
+      group_id: newGroup.id,
+      user_id: req.session.user_id,
+    })
 
     res.status(200).json({
       newGroup,
-      newGroupUser
+      newGroupUser,
+      newRole
     });
 
   } catch (err) {
     res.status(500).json(err);
-  }
+  };
 });
 
 // DELETE route to disband group
+
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+
+    // **** TO DO ****
+    
+    // add in authentication to make sure user is the creator of group
+    
+    // ****
+
+    const deleteGroup = await Group.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    const deleteGroupUser = await GroupUser.findAll({
+      where: {
+        group_id: req.params.id,
+      },
+    });
+
+    res.status(200).json({
+      deleteGroup,
+      deleteGroupUser,
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
+  };
+});
 
 module.exports = router;

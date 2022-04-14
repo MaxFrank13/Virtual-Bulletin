@@ -49,20 +49,6 @@ const handleBulletinSubmit = async (e) => {
   }
 };
 
-const handlePanelClick = async (e) => {
-  const id = e.target.dataset.id;
-  const type = e.target.dataset.type;
-
-  switch(type) {
-    case 'group':
-      document.location.replace(`/group/${id}`);
-      break;
-    case 'bulletin':
-      document.location.replace(`/bulletin/${id}`);
-      break;
-    default: 
-  }
-};
 
 const handleInviteResponse = async (e) => {
   let user_accepted;

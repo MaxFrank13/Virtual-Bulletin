@@ -141,13 +141,15 @@
        </div>`;
     if (userLinkInput.value) {
       let newLink = document.createElement("a");
+      newLink.classList.add('card-link');
       newLink.href = userLinkInput.value;
-      newLink.textContent = "link";
+      newLink.textContent = "check out this link";
       newLink.target = "_blank";
       newCard.appendChild(newLink);
     };
     if (userImageInput.value) {
       let newImage = document.createElement("img");
+      newImage.classList.add('card-img');
       newImage.src = userImageInput.value;
       newImage.alt = "user input";
       newCard.appendChild(newImage);
@@ -245,6 +247,7 @@
     if (userImageInput) userImageInput.value = data.image;
     if (userLinkInput) userLinkInput.value = data.link;
     editContent = true;
+    placingContent = true;
   }
 
   async function handleCardEdit() {
@@ -255,6 +258,8 @@
         content: userContentInput.value,
         image: userImageInput.value,
         link: userLinkInput.value,
+        position_top: mouseY,
+        position_left: mouseX,
       }),
       headers: {
         'Content-Type': 'application/json',

@@ -27,15 +27,6 @@ GroupUser.init(
         unique: false
       },
     },
-    role_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'role',
-        key: 'id',
-        unique: false
-      },
-      defaultValue: 1,
-    }
   },
   {
     sequelize,

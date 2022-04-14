@@ -12,6 +12,9 @@
 
   --cornsilk-50: #fff8dc;
   --cornsilk-70: #dfdbcd;
+  
+  --post-it: #fff1bc;
+  --abyss: #070522;
 
   --white: #fff;
   --black: #000;
@@ -35,7 +38,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: all 0.3s;
 }
 body {
   height: 100vh;
@@ -44,6 +46,13 @@ body {
   background: var(--white-green);
   font-family: var(--ff-primary);
 }
+
+header,
+section.tile,
+form.post {
+  transition: all 0.3s;
+}
+
 img {
   width: 100%;
 }
@@ -52,24 +61,48 @@ button.button.is-info {
   margin-bottom: 0.2rem;
 }
 
-button.button:hover {
+button.button:hover,
+li.button:hover {
   filter: brightness(1.2);
 }
 
 /* ==== Bulletin Board */
 
-.board {
+section.board {
   height: 100vh;
+  overflow: auto;
   background: url("../assets/images/cork-bg.jpg");
   position: relative;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
-.bulletin-card {
+
+section.board::-webkit-scrollbar {
+  display: none;
+}
+
+div.bulletin-card {
   max-width: 340px;
   position: absolute;
   padding: 1rem;
-  background: var(--cornsilk-50);
-  border-radius: 0.5rem;
-  box-shadow: inset 0px 0px 14px 8px #142205, 1px 3px 7px -1px;
+  background: var(--post-it);
+  border-radius: 0.4rem;
+  box-shadow: inset 0px 0px 14px 8px #050505;
+}
+h3.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  padding-left: 0.35rem;
+}
+
+p.card-body {
+  padding: 0.15rem;
+}
+
+a.card-link {
+  padding: 0.25rem;
+  color: purple;
 }
 
 section.menu {
@@ -242,8 +275,14 @@ section.group-interface {
   box-shadow: 0 52px 32px 11px var(--grey-50);
 }
 
+section.group-interface form {
+  min-width: 295px;
+}
+
 section.user-interface {
   display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
   gap: 5rem;
   min-width: 360px;
   border-top-left-radius: 2rem;
@@ -256,6 +295,8 @@ section.user-interface {
 section.user-interface ul.member-list li {
   display: flex;
   flex-direction: column;
+  padding-top: 1rem;
+  background-color: var(--abyss);
 }
 
 section.btn-container {
@@ -294,13 +335,8 @@ a.navbar-item {
 
 /* Media Queries */
 
-@media screen and (max-width: 765px) {
-  section.user-interface {
-    flex-direction: column;
-  }
-}
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 765px) {
     .hero {
       flex-direction: row;
       align-items: center;
@@ -308,6 +344,17 @@ a.navbar-item {
     div.title {
       flex-direction: row;
       justify-content: center;
+    }
+    section.user-interface > * {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 33%;
+      text-align: center;
+    }
+    section.user-interface {
+      flex-direction: row;
+      align-items: flex-start;
     }
 }
 

@@ -8,10 +8,10 @@
     <h3 class="card-title">{{card.header}}</h3>
     <p class="card-body">{{card.content}}</p>
     {{#if card.link}}
-    <a href="{{card.link}}" target="_blank">link</a>
+    <a class="card-link" href="{{card.link}}" target="_blank">check out this link</a>
     {{/if}}
     {{#if card.image}}
-    <img src="{{card.image}}" alt="card-image for {{card.header}}">
+    <img class="card-img" src="{{card.image}}" alt="card-image for {{card.header}}">
     {{/if}}
   </div>
 </div>

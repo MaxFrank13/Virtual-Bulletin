@@ -1,7 +1,7 @@
 // routes for storing and passing invitations
 const router = require('express').Router();
 const { json } = require('express/lib/response');
-const { User, Group, GroupUser, Invitation } = require('../../models');
+const { User, Group, GroupUser, Invitation, Role } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // POST new invitation by email
@@ -46,13 +46,19 @@ router.put('/:id', withAuth, async (req, res) => {
 
     if (req.body.user_accepted) {
       const newGroupUser = await GroupUser.create({
-        user_id: req.session.user_id,
         group_id: req.body.group_id,
+        user_id: req.session.user_id,
       });
+      const newRole = await Role.create({
+        role_name: 'Contributor',
+        group_id: req.body.group_id,
+        user_id: req.session.user_id,
+      })
       res.status(200).json({
         invitationData,
-        newGroupUser
-        });
+        newGroupUser,
+        newRole,
+      });
     } else {
       res.status(200).json(invitationData);
     };

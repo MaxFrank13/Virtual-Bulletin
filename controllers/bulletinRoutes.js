@@ -55,5 +55,19 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // DELETE route to delete bulletin
+router.delete('/:id', async (req, res) => {
+  try {
+    const deleteBulletin = await Bulletin.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    res.status(200).json(deleteBulletin);
+
+  } catch (err) {
+    res.status(500).json(err);
+  };
+});
 
 module.exports = router;
