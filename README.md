@@ -2,7 +2,9 @@
 
 ## Description
 
-Use this app as a hub for research materials that you wish to share with a group or just keep in one location. Users are given the option to create groups and invite others to join. From there, a user can create bulletins to share with that group. Posts can be made to those bulletins the same way you would in the real world! 
+Use this app as a hub for research materials that you wish to share with a group or just keep in one location. Users are given the option to create groups and invite others to join. From there, a user can create bulletins to share with that group. Posts can be made to those bulletins the same way you would in the real world!
+
+This is a full stack application built using Handlebars as a templating engine, Express to route, Sequelize as the ORM, and Bulma as a CSS framework. Passwords are encyrpted using the bcrypt npm package.
 
 [Virtual Bulletins](https://mysterious-meadow-53370.herokuapp.com/login)
 
