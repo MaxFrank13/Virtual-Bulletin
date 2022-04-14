@@ -2,7 +2,9 @@
 
 ## Description
 
-Use this app as a hub for research materials that you wish to share with a group or just keep in one location. Users are given the option to create groups and invite others to join. From there, a user can create bulletins to share with that group. Posts can be made to those bulletins the same way you would in the real world! 
+Use this app as a hub for research materials that you wish to share with a group or just keep in one location. Users are given the option to create groups and invite others to join. From there, a user can create bulletins to share with that group. Posts can be made to those bulletins the same way you would in the real world!
+
+This is a full stack application built using Handlebars as a templating engine, Express to route, Sequelize as the ORM, and Bulma as a CSS framework. Passwords are encyrpted using the bcrypt npm package.
 
 [Virtual Bulletins](https://mysterious-meadow-53370.herokuapp.com/login)
 
@@ -34,17 +36,17 @@ This dashboard is your own personal hub that holds records of any groups you bel
 
 ![screenshot of Personal Dashboard](https://github.com/MaxFrank13/Virtual-Bulletin/blob/main/public/assets/images/dashboard-photo.PNG)
 
-This is also where you can create your first group! You will need to create one before making any bulletins. Bulleins require a reference to the group it belongs to. So when creating a bulletin, you will need to also submit a group that you'd like it to belong to.
+This is also where you can create your first group! You will need to create one before making any bulletins. When creating a bulletin, you will need to also submit a group that you'd like it to belong to.
 
 ### Group Dashboard
 
 ![screenshot of Group Dashboard](https://github.com/MaxFrank13/Virtual-Bulletin/blob/main/public/assets/images/group-dashboard-photo.PNG)
 
-This is the dashboard that is shared with a group. Each group dashboard has options to create bulletins, invite members, and check group settings. You can also navigate to any of the group's bulletins from this page.
+This is the dashboard that is shared with a group. Each group dashboard has options to create bulletins, invite members, and check group settings. You can also navigate to any of the group's bulletins from this page as well as see what role each member holds. 
 
 ![screenshot of Group Dashboard](https://github.com/MaxFrank13/Virtual-Bulletin/blob/main/public/assets/images/invitation-photo.PNG)
 
-You can also see what role each member has for that group. In future development, a chat screen could be added here to improve collaboration and interactivity between users.
+This is what an invitation will look like in someone's dashboard. 
 
 ### Bulletin board
 
