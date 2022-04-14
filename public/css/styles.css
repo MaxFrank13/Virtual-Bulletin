@@ -82,6 +82,7 @@ section.board::-webkit-scrollbar {
 }
 
 div.bulletin-card {
+  min-width: 260px;
   max-width: 340px;
   position: absolute;
   padding: 1rem;
@@ -246,6 +247,7 @@ div.tile.action-panel {
 
 div.tile.records-panel {
   box-shadow: 0 0 5px 5px var(--grey-40);
+  padding-left: 1.5rem;
 }
 
 form.group,
@@ -355,6 +357,9 @@ a.navbar-item {
     section.user-interface {
       flex-direction: row;
       align-items: flex-start;
+    }
+    div.tile.records-panel {
+      padding: 1rem;
     }
 }
 
