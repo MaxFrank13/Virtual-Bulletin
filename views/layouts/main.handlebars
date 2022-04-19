@@ -15,20 +15,22 @@
 </head>
 
 <body>
-  <header class="hero columns">
-    <div class="hero-body column is-offset-1">
-      <nav class="navbar column" role="navigation" aria-label="main navigation">
+  <header class="hero">
+    <div class="hero-body is-offset-1">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="nav-menu">
           <div class="navbar-item title">
             <a class="button is-large is-outlined is-dark" href="/">
               Virtual Bulletins
             </a>
+          </div>
+          <div class="navbar-item">
         {{#if logged_in}}
-            <a id="dashboard" class="navbar-item button is-info is-light is-outlined" href="/dashboard">dashboard</a>
-            <a id="logout" class="navbar-item button is-danger is-light is-outlined">logout</a>
+            <a id="dashboard" class="button is-info is-light" href="/dashboard">dashboard</a>
+            <a id="logout" class="button is-danger is-light">logout</a>
         {{else}}
-            <a id="login" class="navbar-item button is-info is-light" href="/login">login</a>
-        {{/if}}
+            <a id="login" class="navbar-item" href="/login">login</a>
+        {{/if}}    
           </div>
           <p class="subtitle">Make bulletins to share resources with your team</p>
         </div>

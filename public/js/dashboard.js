@@ -25,13 +25,14 @@ const handleBulletinSubmit = async (e) => {
   const bulletin_name = document.querySelector('#bulletin-name').value.trim();
   const groupName = document.querySelector('#group-verify').value.trim();
   
-  const getGroupId = await fetch(`/api/group?${groupName}`, {
+  const getGroupId = await fetch(`/group/getId/${groupName}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     }
   });
-  const { id } = await getGroupId.json();
+
+  const id = await getGroupId.json();
   
   const postBulletin = await fetch(`/bulletin`, {
     method: 'POST',
@@ -43,10 +44,14 @@ const handleBulletinSubmit = async (e) => {
       'Content-Type': 'application/json',
     }
   });
+
+  const bulletin = await postBulletin.json();
   
-  if (!postBulletin.ok) {
-    console.error('unable to create bulletin');
+  if (postBulletin.ok) {
+    document.location.replace(`/bulletin${bulletin.id}`)
   }
+
+  console.error('unable to create bulletin');
 };
 
 

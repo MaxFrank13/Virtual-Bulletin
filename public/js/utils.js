@@ -5,13 +5,13 @@ const toggleForm = (e) => {
     thisForm.classList.remove('hide');
     e.target.classList.add('is-danger');
     e.target.classList.remove('is-link');
-    e.target.textContent = 'X';
+    e.target.innerHTML = '<i class="fa-solid fa-window-minimize"></i>';
     return;
   }
   thisForm.classList.add('hide');
   e.target.classList.add('is-link');
   e.target.classList.remove('is-danger');
-  e.target.textContent = btnFunction;
+  e.target.innerHTML = btnFunction;
 };
 
 const handlePanelClick = async (e) => {

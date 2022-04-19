@@ -76,6 +76,33 @@ router.get('/:id', async (req, res) => {
   };
 });
 
+// GET group_id by name and user_id
+router.get('/getId/:name', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: {
+        exclude: ['password'],
+      },
+      include: [
+        {
+          model: Group,
+          through: GroupUser,
+          as: 'groups',
+        },
+      ],
+    });
+
+    const {groups} = await userData.get({ plain: true });
+
+    const {id} = await groups.find(group => group.group_name === req.params.name);
+
+    res.status(200).json(id);
+
+  } catch(err) {
+    res.status(500).json(err);
+  };
+});
+
 // POST route for creating a new group
 router.post('/', withAuth, async (req, res) => {
   try {

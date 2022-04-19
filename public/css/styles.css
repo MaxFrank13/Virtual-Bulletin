@@ -18,7 +18,9 @@
 
   --white: #fff;
   --black: #000;
+  --grey-30: #d6d6d6;
   --grey-40: #d6cece;
+  --grey-60: #d5d9d4;
   --grey-45: #9e9a9aec;
   --grey-50: #cdc9c985;
   --grey-80: #00000099;
@@ -66,7 +68,65 @@ li.button:hover {
   filter: brightness(1.2);
 }
 
-/* ==== Bulletin Board */
+/* ==== Nav ==== */
+
+div.nav-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* ==== Homepage ==== */
+
+section.intro {
+  display: grid;
+  place-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+}
+
+section.intro p {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 15%;
+  gap: 1rem;
+  text-align: center;
+  background: var(--grey-60);
+  box-shadow: 0 0 20px 15px var(--grey-60);
+  text-shadow: 0 0 5px var(--white);
+}
+
+section.intro img {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+section.about {
+  background: var(--white-green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section.contact {
+  display: grid;
+  place-content: center;
+  box-shadow: 0 10px 10px 5px var(--black);
+}
+
+section.contact ul {
+  display: flex;
+  gap: 2rem;
+  padding: 0.5rem 0 1rem;
+}
+
+section.contact i {
+  font-size: 1.2rem;
+}
+
+/* ==== Bulletin Board ==== */
 
 section.board {
   height: 100vh;
@@ -205,6 +265,7 @@ p.greeting {
   padding-left: 6%;
   font-size: 1.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 div.messages-panel {
@@ -237,18 +298,18 @@ table.table.messages i:hover{
 }
 
 div.tile.action-panel {
-  margin: auto;
-  padding: 2rem;
-  align-items: center;
-  justify-content: start;
-  flex-direction: column;
+  display: grid;
+  place-content: center;
   gap: 1rem;
 }
 
 div.tile.records-panel {
   box-shadow: 0 0 5px 5px var(--grey-40);
   padding-left: 1.5rem;
+  display: flex;
+  gap: 0.35rem;
 }
+
 
 form.group,
 form.bulletin,
@@ -316,6 +377,7 @@ section.btn-container {
 div.title {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .hero {
@@ -327,10 +389,6 @@ div.title {
   align-items: center;
 }
 
-a.navbar-item {
-  margin: 0.5rem 5%;
-  width: 125px;
-}
 .subtitle {
   text-align: center;
 }
@@ -360,6 +418,12 @@ a.navbar-item {
     }
     div.tile.records-panel {
       padding: 1rem;
+    }
+    section.intro img {
+      width: 80%;
+    }
+    section.contact i {
+      font-size: 1.6rem;
     }
 }
 
