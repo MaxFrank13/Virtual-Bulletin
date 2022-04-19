@@ -48,7 +48,7 @@ const handleBulletinSubmit = async (e) => {
   const bulletin = await postBulletin.json();
   
   if (postBulletin.ok) {
-    document.location.replace(`/bulletin${bulletin.id}`)
+    document.location.replace(`/bulletin/${bulletin.id}`)
   }
 
   console.error('unable to create bulletin');

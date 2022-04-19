@@ -300,14 +300,20 @@ table.table.messages i:hover{
 div.tile.action-panel {
   display: grid;
   place-content: center;
+  justify-items: center;
   gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 3rem;
+  background: radial-gradient(var(--white-green), var(--grey-30));
+  box-shadow: -10px 10px 11px 11px var(--grey-30);
 }
 
 div.tile.records-panel {
-  box-shadow: 0 0 5px 5px var(--grey-40);
+  box-shadow: -10px 10px 11px 11px var(--grey-30);
   padding-left: 1.5rem;
   display: flex;
   gap: 0.35rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 
@@ -415,6 +421,9 @@ div.title {
     section.user-interface {
       flex-direction: row;
       align-items: flex-start;
+    }
+    div.tile.action-panel {
+      margin: 0;
     }
     div.tile.records-panel {
       padding: 1rem;

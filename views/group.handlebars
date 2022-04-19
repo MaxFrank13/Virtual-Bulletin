@@ -3,7 +3,7 @@
   <section class="user-interface">
 
     <ul class="member-list">
-      <h3 class="title is-4">Members:</h3>
+      {{!-- <h3 class="title is-4">Members:</h3> --}}
       {{#each users as |user|}}
       <li class="tag is-info subtitle is-5">
         {{user.name}}
@@ -63,10 +63,14 @@
     </section>
 
     <ul class="bulletin-list">
-      <h3 class="title is-4">Bulletins:</h3>
+      {{!-- <h3 class="title is-4">Bulletins:</h3> --}}
+      {{#if bulletins.length}}
       {{#each bulletins as |bulletin|}}
       <li data-type="bulletin" data-id="{{bulletin.id}}" class="button is-info subtitle is-6">{{bulletin.bulletin_name}}</li>
       {{/each}}
+      {{else}}
+      <li>Group bulletins will display here</li>
+      {{/if}}
     </ul>
   </section>
 </section>

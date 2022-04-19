@@ -1,11 +1,12 @@
 const toggleForm = (e) => {
+  e.stopPropagation();
   const thisForm = e.target.nextSibling.nextSibling;
   const btnFunction = e.target.dataset.name;
   if (thisForm.classList.contains('hide')) {
     thisForm.classList.remove('hide');
     e.target.classList.add('is-danger');
     e.target.classList.remove('is-link');
-    e.target.innerHTML = '<i class="fa-solid fa-window-minimize"></i>';
+    e.target.innerHTML = '🗕';
     return;
   }
   thisForm.classList.add('hide');
