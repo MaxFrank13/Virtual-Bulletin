@@ -107,7 +107,6 @@ div.nav-menu .navbar-item {
 
 section.intro {
   display: grid;
-  place-content: center;
   gap: 4rem;
   font-size: 1.5rem;
   color: var(--white-green);
