@@ -17,7 +17,7 @@ const handleGroupSubmit = async (e) => {
   if (response.ok) {
     return document.location.replace(`/group/${newGroup.id}`);
   }
-  alert('name already in use');
+  alert('unable to create group');
 };
 
 const handleBulletinSubmit = async (e) => {
@@ -48,10 +48,11 @@ const handleBulletinSubmit = async (e) => {
   const bulletin = await postBulletin.json();
   
   if (postBulletin.ok) {
-    document.location.replace(`/bulletin/${bulletin.id}`)
+    document.location.replace(`/bulletin/${bulletin.id}`);
+    return;
   }
 
-  console.error('unable to create bulletin');
+  alert('unable to create bulletin');
 };
 
 

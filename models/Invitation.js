@@ -14,7 +14,13 @@ Invitation.init(
     },
     message: {
       type: DataTypes.STRING,
-      defaultValue: 'Invite to join'
+      defaultValue: 'Join invitation',
+      validate: {
+        len: {
+          args: [4, 42],
+          msg: "Message must be between 4 and 42 characters",
+        },
+      },
     },
     user_accepted: {
       type: DataTypes.BOOLEAN,

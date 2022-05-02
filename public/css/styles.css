@@ -7,8 +7,12 @@
 :root {
   /* colors */
 
+  --white-blue: #c7d0cf;
   --white-green: #ecf1e7;
+  --light-grey-green: #e3ede1;
   --light-green: #d0e4bc;
+  --grey-green: #777c75;
+
 
   --cornsilk-50: #fff8dc;
   --cornsilk-70: #dfdbcd;
@@ -19,8 +23,8 @@
   --white: #fff;
   --black: #000;
   --grey-30: #d6d6d6;
+  --grey-35: #d5d9d4;
   --grey-40: #d6cece;
-  --grey-60: #d5d9d4;
   --grey-45: #9e9a9aec;
   --grey-50: #cdc9c985;
   --grey-80: #00000099;
@@ -45,7 +49,7 @@ body {
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--white-green);
+  background: var(--white-blue);
   font-family: var(--ff-primary);
 }
 
@@ -55,8 +59,27 @@ form.post {
   transition: all 0.3s;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  color: var(--grey-green);
+  box-shadow: 0 5px 10px 5px var(--grey-80);
+}
+footer i {
+  font-size: 1.5rem;
+}
+
 img {
   width: 100%;
+}
+
+.intro small {
+  font-size: 0.975rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
 }
 
 button.button.is-info {
@@ -76,26 +99,29 @@ div.nav-menu {
   align-items: center;
   margin: 0 auto;
 }
+div.nav-menu .navbar-item {
+  gap: 1rem;
+}
 
 /* ==== Homepage ==== */
 
 section.intro {
   display: grid;
   place-content: center;
-  gap: 2rem;
+  gap: 4rem;
   font-size: 1.5rem;
+  color: var(--white-green);
 }
 
 section.intro p {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background: rgb(72, 77, 76);
   padding: 1rem 15%;
   gap: 1rem;
   text-align: center;
-  background: var(--grey-60);
-  box-shadow: 0 0 20px 15px var(--grey-60);
-  text-shadow: 0 0 5px var(--white);
+  box-shadow: 0 0 5px 5px rgb(72, 77, 76);
 }
 
 section.intro img {
@@ -108,12 +134,6 @@ section.about {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-section.contact {
-  display: grid;
-  place-content: center;
-  box-shadow: 0 10px 10px 5px var(--black);
 }
 
 section.contact ul {
@@ -273,6 +293,7 @@ div.messages-panel {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 3rem;
 }
 
 div.messages-panel > p {
@@ -310,7 +331,7 @@ div.tile.action-panel {
 
 div.tile.records-panel {
   box-shadow: -10px 10px 11px 11px var(--grey-30);
-  padding-left: 1.5rem;
+  padding: 2.5rem 1.5rem;
   display: flex;
   gap: 0.35rem;
   border-bottom-left-radius: 0.25rem;

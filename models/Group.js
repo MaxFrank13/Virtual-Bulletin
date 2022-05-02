@@ -14,6 +14,12 @@ Group.init(
     group_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: {
+          args: [4, 24],
+          msg: "Group name must be between 4 and 24 characters",
+        },
+      },
     },
   },
   {

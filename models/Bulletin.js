@@ -14,6 +14,12 @@ Bulletin.init(
     bulletin_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: {
+          args: [4, 24],
+          msg: "Bulletin name must be between 4 and 24 characters",
+        },
+      },
     },
     group_id: {
       type: DataTypes.INTEGER,

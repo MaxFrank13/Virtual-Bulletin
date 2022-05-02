@@ -14,6 +14,12 @@ Card.init(
     header: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: {
+          args: [4, 24],
+          msg: "Card header must be between 4 and 24 characters",
+        },
+      },
     },
     content: {
       type: DataTypes.STRING,

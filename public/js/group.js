@@ -19,7 +19,9 @@ const handleBulletinSubmit = async (e) => {
 
   if (response.ok) {
     document.location.replace(`/bulletin/${data.id}`)
+    return;
   };
+  alert('unable to create bulletin');
 };
 
 const handleInvite = async (e) => {
