@@ -6,28 +6,34 @@
 
 :root {
   /* colors */
-
-  --white-blue: #c7d0cf;
-  --white-green: #ecf1e7;
-  --light-grey-green: #e3ede1;
   --light-green: #d0e4bc;
-  --grey-green: #777c75;
 
-
-  --cornsilk-50: #fff8dc;
-  --cornsilk-70: #dfdbcd;
+  --yellow-05: #fffaeb;
+  --yellow-10: #FCEFC7;
+  --yellow-20: #F8E3A3;
+  --yellow-30: #F9DA8B;
+  --yellow-40: #F7D070;
+  --yellow-50: #E9B949;
+  --yellow-60: #C99A2E;
+  --yellow-70: #A27C1A;
+  --yellow-80: #7C5E10;
+  --yellow-90: #513C06;
   
   --post-it: #fff1bc;
   --abyss: #070522;
 
   --white: #fff;
   --black: #000;
-  --grey-30: #d6d6d6;
-  --grey-35: #d5d9d4;
-  --grey-40: #d6cece;
-  --grey-45: #9e9a9aec;
-  --grey-50: #cdc9c985;
-  --grey-80: #00000099;
+  --grey-05: #F7F7F7;
+  --grey-10: #E1E1E1;
+  --grey-20: #CFCFCF;
+  --grey-30: #B1B1B1;
+  --grey-40: #9E9E9E;
+  --grey-50: #7E7E7E;
+  --grey-60: #626262;
+  --grey-70: #515151;
+  --grey-80: #3B3B3B;
+  --grey-90: #222222;
 
   --ff-primary: 'Roboto Slab', serif;
   --ff-placeholder: 'Electrolize', sans-serif;
@@ -46,10 +52,9 @@
   padding: 0;
 }
 body {
-  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--white-blue);
+  background: var(--yellow-10);
   font-family: var(--ff-primary);
 }
 
@@ -59,10 +64,16 @@ form.post {
   transition: all 0.3s;
 }
 
+main {
+  min-height: 62vh;
+  background: var(--yellow-10);
+}
+
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 8vh;
   gap: 0.25rem;
   padding: 1rem;
   color: var(--grey-green);
@@ -107,32 +118,41 @@ div.nav-menu .navbar-item {
 
 section.intro {
   display: grid;
-  gap: 4rem;
+  gap: 1.25rem;
   font-size: 1.5rem;
-  color: var(--white-green);
+  color: var(--grey-90);
+}
+
+section.intro div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 5px 1px var(--yellow-90), inset 0 0 5px 1px var(--yellow-90);
+  padding: 2rem 10%;
 }
 
 section.intro p {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: rgb(72, 77, 76);
-  padding: 1rem 15%;
+  background: var(--yellow-20);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  max-width: 720px;
   gap: 1rem;
   text-align: center;
-  box-shadow: 0 0 5px 5px rgb(72, 77, 76);
 }
 
 section.intro img {
-  width: 100%;
+  width: clamp(320px, 29rem, 500px);
   border-radius: 1rem;
 }
 
 section.about {
-  background: var(--white-green);
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--yellow-30);
 }
 
 section.contact ul {
@@ -207,7 +227,7 @@ form.post {
   background: var(--grey-80);
   color: var(--white);
   box-shadow: 7px 6px 14px -4px var(--black);
-  border: 2px solid var(--grey-45);
+  border: 2px solid var(--grey-40);
   border-radius: 0.25rem;
   border-top-left-radius: 4rem;
 }
@@ -220,7 +240,7 @@ form.post button.button {
 
 section.form-container {
   align-items: center;
-  padding: 1rem 10%;
+  padding: 4rem 10%;
   gap: 6rem;
 }
 
@@ -229,6 +249,11 @@ section.form-container > * {
   padding: 1rem;
   box-shadow: 0px 0px 20px 2px var(--grey-80);
   border-radius: 1rem;
+}
+
+section form.login,
+section form.sign-up {
+  background: var(--yellow-05);
 }
 
 .icon-container {
@@ -248,7 +273,7 @@ section.form-container > * {
   color: #e84f4f;
 }
 textarea {
-  background: var(--grey-50);
+  background: var(--grey-05);
   box-shadow: 0px 0px 3px 3px #89b1b5;
   font-size: 1.2rem;
   font-family: var(--ff-primary);
@@ -281,7 +306,7 @@ div.greeting-container {
 }
 
 p.greeting {
-  padding-left: 6%;
+  padding: 1.25rem;
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
@@ -324,12 +349,13 @@ div.tile.action-panel {
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding: 3rem;
-  background: radial-gradient(var(--white-green), var(--grey-30));
-  box-shadow: -10px 10px 11px 11px var(--grey-30);
+  background: radial-gradient(var(--grey-05), var(--grey-10));
+  box-shadow: -10px 10px 11px 11px var(--yellow-20);
 }
 
 div.tile.records-panel {
-  box-shadow: -10px 10px 11px 11px var(--grey-30);
+  background: radial-gradient(var(--grey-05), var(--grey-10));
+  box-shadow: -10px 10px 11px 11px var(--yellow-20);
   padding: 2.5rem 1.5rem;
   display: flex;
   gap: 0.35rem;
@@ -341,7 +367,7 @@ form.group,
 form.bulletin,
 form.invite-member,
 form.group-settings {
-  box-shadow: 0 -52px 32px 11px var(--grey-50);
+  box-shadow: 0 -52px 32px 11px var(--grey-20);
   animation: dropdown 0.5s;
 }
 
@@ -361,7 +387,7 @@ span[data-type="bulletin"]:hover {
 section.group-interface {
   display: grid;
   place-items: center;
-  box-shadow: 0 52px 32px 11px var(--grey-50);
+  box-shadow: 0 52px 32px 11px var(--grey-90);
 }
 
 section.group-interface form {
@@ -377,6 +403,7 @@ section.user-interface {
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   box-shadow: 0 0 55px 5px var(--grey-40);
+  background: var(--grey-10);
   padding: 2.5rem;
   animation: dropdown 0.7s;
 }
@@ -407,8 +434,9 @@ div.title {
 }
 
 .hero {
-  background: var(--cornsilk-70);
-  box-shadow: inset 0px -10px 20px 3px var(--white-green);
+  height: 30vh;
+  background: var(--yellow-20);
+  box-shadow: inset 0px -10px 20px 3px var(--yellow-10);
 }
 
 .hero-body {
@@ -423,6 +451,10 @@ div.title {
 
 
 @media screen and (min-width: 765px) {
+    p.greeting {
+      padding: 0;
+      padding-left: 6%;
+    }
     .hero {
       flex-direction: row;
       align-items: center;
@@ -447,9 +479,6 @@ div.title {
     }
     div.tile.records-panel {
       padding: 1rem;
-    }
-    section.intro img {
-      width: 80%;
     }
     section.contact i {
       font-size: 1.6rem;

@@ -20,14 +20,14 @@
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="nav-menu">
           <div class="navbar-item title">
-            <a class="button is-large is-outlined is-dark" href="/">
+            <a class="button is-large is-dark" href="/">
               Virtual Bulletins
             </a>
           </div>
           <div class="navbar-item">
             {{#if logged_in}}
-            <a id="dashboard" class="button is-info is-light" href="/dashboard">dashboard</a>
-            <a id="logout" class="button is-danger is-light">logout</a>
+            <a id="dashboard" class="button is-info is-light is-outlined" href="/dashboard">dashboard</a>
+            <a id="logout" class="button is-danger is-light is-outlined">logout</a>
             {{else}}
             <a id="login" class="button is-light" href="/login">login</a>
             {{/if}}
@@ -41,11 +41,12 @@
     <!-- Render the sub layout -->
     {{{ body }}}
   </main>
-
+  {{> footer}}
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+
 </body>
 
 </html>
