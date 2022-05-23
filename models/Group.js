@@ -14,6 +14,7 @@ Group.init(
     group_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         len: {
           args: [4, 24],

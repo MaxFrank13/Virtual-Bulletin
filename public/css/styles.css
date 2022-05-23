@@ -54,7 +54,7 @@
 body {
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--yellow-60);
+  background: var(--yellow-50);
   font-family: var(--ff-primary);
 }
 
@@ -66,7 +66,7 @@ form.post {
 
 main {
   min-height: 62vh;
-  background: var(--yellow-40);
+  background: var(--yellow-30);
 }
 
 footer {
@@ -127,6 +127,7 @@ section.intro div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--yelow-05);
   box-shadow: 0 0 5px 1px var(--yellow-90), inset 0 0 5px 1px var(--yellow-90);
   padding: 2rem 10%;
 }
@@ -135,7 +136,7 @@ section.intro p {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: var(--yellow-20);
+  background: var(--yellow-10);
   padding: 1rem;
   border-radius: 0.25rem;
   max-width: 720px;
@@ -310,6 +311,8 @@ p.greeting {
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
+  background: radial-gradient(var(--yellow-05), var(--yellow-10));
+  border-radius: 0.25rem;
 }
 
 div.messages-panel {
@@ -349,12 +352,12 @@ div.tile.action-panel {
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding: 3rem;
-  background: radial-gradient(var(--grey-05), var(--grey-10));
+  background: radial-gradient(var(--yellow-05), var(--yellow-10));
   box-shadow: -10px 10px 11px 11px var(--yellow-20);
 }
 
 div.tile.records-panel {
-  background: radial-gradient(var(--grey-05), var(--grey-10));
+  background: radial-gradient(var(--yellow-05), var(--yellow-10));
   box-shadow: -10px 10px 11px 11px var(--yellow-20);
   padding: 2.5rem 1.5rem;
   display: flex;
@@ -367,8 +370,8 @@ form.group,
 form.bulletin,
 form.invite-member,
 form.group-settings {
-  box-shadow: 0 -52px 32px 11px var(--grey-20);
-  animation: dropdown 0.5s;
+  box-shadow: 0 -52px 32px 11px var(--yellow-10);
+  animation: dropdown 0.3s;
 }
 
 span[data-type="group"],
@@ -403,7 +406,7 @@ section.user-interface {
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
   box-shadow: 0 0 55px 5px var(--grey-40);
-  background: var(--grey-10);
+  background: var(--yellow-05);
   padding: 2.5rem;
   animation: dropdown 0.7s;
 }

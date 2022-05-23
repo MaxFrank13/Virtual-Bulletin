@@ -58,13 +58,15 @@ The bulletin board itself is the main attraction for this application. Users can
 
 ## Future Development
 
-There are responsivenes concerns with this application. The glaring issue is that the bulletin itself isn't mobile-friendly. That being said, it was never meant to be. This is supposed to replicate how someone would interact with a real bulletin board. Bulletin boards are supposed to be wide. When using one, you typically don't look at the whole thing at once. Instead, you are more likely to be "zoomed in" on certain parts of the bulletin. I'm not sure if anything should be done about this, but I wanted to address it here for reference.
+There are responsiveness concerns with this application. The glaring issue is that the bulletin itself isn't mobile-friendly. That being said, it was never meant to be. This is supposed to replicate how someone would interact with a real bulletin board. Bulletin boards are supposed to be wide. When using one, you typically don't look at the whole thing at once. Instead, you are more likely to be "zoomed in" on certain parts of the bulletin. I'm not sure if anything should be done about this, but I wanted to address it here for reference.
 
 As of April 14th, 2022, there are still many odds and ends that can be tied up to clean things up. One of which is ensuring users have the option to leave/delete groups, as well as removing bulletins when they're defunct or otherwise unused. A large poriton of the routes are in place for this, so it would mostly be work done on the FE.
 
 Adding a chat box and/or messaging system would be helpful for this application and was in the original idea. 
 
 The position of cards can be adjusted by clicking the board when in edit mode, however, this isn't the best user experience. Future development could be to make this drag-and-drop process smoother.
+
+If I were to work on this project again, I'd consider converting it to use the MERN stack with TailwindCSS and NextJS as supporting frameworks.
 
 
 
